@@ -62,7 +62,6 @@ export default class Counter extends HTMLElement {
             <style>${this.css.trim()}</style>
             ${this.template().trim()}
         `;
-        this.shadowRoot.append(template1.content.cloneNode(true));
 
         this.shadowRoot.querySelector(".button--increment").addEventListener("click", this.onIncrementButtonClick);
         this.shadowRoot.querySelector(".button--decrement").addEventListener("click", this.onDecrementButtonClick);
