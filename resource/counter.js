@@ -2,6 +2,7 @@ export default class Counter extends HTMLElement {
     css = `
         :host {
             display: block;
+            touch-action: manipulation;
             max-width: 150px;
             background-color: white;
             border-radius: 4px;
