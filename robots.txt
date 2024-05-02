@@ -1,6 +1,0 @@
-User-agent: *
-Disallow: /meal/
-Allow: /blog/
-
-Sitemap: https://lazyfarmerer.github.io/sitemap.xml
-Sitemap: https://lazyfarmerer.github.io/blog/sitemap.xml
