@@ -30,6 +30,7 @@
     <!-- 구글 애드센스 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"/>
     <link rel="stylesheet" href="resource/style.css"/>
+    <script type="text/javascript" src="resource/siteCollection.json"></script>
     <script type="module" src="resource/custom.js"></script>
 </head>
 <body>
@@ -51,27 +52,18 @@
 
     <article>
       <p>유용한 사이트 모음</p>
-      <ul>
-        <li><a href="https://pixlr.com/kr/" target="_blank" class="contrast" data-tooltip="무료 온라인 사진 편집기">pixlr</a></li>
-        <li><a href="https://www.remove.bg/ko/g/developers" target="_blank" class="contrast" data-tooltip="클라우드 기반 이미지 배경 제거 사이트">remove.bg</a></li>
-        <li><a href="https://www.piskelapp.com/" target="_blank" class="contrast" data-tooltip="애니메이션 스프라이트 및 픽셀 아트를 위한 무료 온라인 편집기">Piskel</a></li>
-        <li><a href="https://opengameart.org/" target="_blank" class="contrast" data-tooltip="각종 스프라이트 및 리소스 제공">opengameart</a></li>
-        <li><a href="https://soundeffect-lab.info/" target="_blank" class="contrast" data-tooltip="알만툴에서 쓰일법한 2D 무료 효과음 제공">soundeffect-lab</a></li>
-        <li><a href="https://www.kenney.nl/" target="_blank" class="contrast" data-tooltip="각종 에셋 제공">kenney</a></li>
-        <li><a href="https://123apps.com/ko/" target="_blank" class="contrast" data-tooltip="비디오, 오디오, PDF 편집,변환,생성">mp3cut</a></li>
-        <li><a href="https://convertio.co/kr/" target="_blank" class="contrast" data-tooltip="파일 변환기">convertio</a></li>
-        <li><a href="https://firebase.google.com/?hl=ko" target="_blank" class="contrast" data-tooltip="서버">firebase</a></li>
+      <ul id="siteCollectionItems">
       </ul>
     </article>
 
     <br>
 
-    {%- include test.html -%}
-
-    <p>상남자 특: 여기서 실험 함</p>
+    <p>하남자 특: 여기서 실험 함</p>
     <counter-component></counter-component>
     <counter-component></counter-component>
     <p>정상 작동 하면 카운터 나움</p>
   </main>
+
+  <script type="text/javascript" src="resource/main.js"></script> 
 </body>
 </html>
