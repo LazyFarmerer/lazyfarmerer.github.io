@@ -1,69 +1,73 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="author" content="게으른 농부">
-    <meta name="description" content="개인이 만든 페이지">
-    <meta name="keyword" content="개인, 도구, 페이지">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/png" sizes="32x32" href="resource/favicon_32.png" />
-    <link rel="apple-touch-icon" type="image/png" sizes="32x32" href="resource/favicon_32.png" />
-    <link rel="shortcut icon" type="image/png" sizes="196x196" href="resource/favicon_196.png" />
-    <link rel="apple-touch-icon" type="image/png" sizes="196x196" href="resource/favicon_196.png" />
-    <title>LazyFarmer</title>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1P0694X5KZ"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+  <meta charset="UTF-8">
+  <meta name="author" content="게으른 농부">
+  <meta name="description" content="개인이 만든 페이지">
+  <meta name="keyword" content="개인, 도구, 페이지">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" type="image/png" sizes="32x32" href="resource/favicon_32.png" />
+  <link rel="apple-touch-icon" type="image/png" sizes="32x32" href="resource/favicon_32.png" />
+  <link rel="shortcut icon" type="image/png" sizes="196x196" href="resource/favicon_196.png" />
+  <link rel="apple-touch-icon" type="image/png" sizes="196x196" href="resource/favicon_196.png" />
+  <title>LazyFarmer</title>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1P0694X5KZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-      gtag('config', 'G-1P0694X5KZ');
-    </script>
-    <!-- 여기까지 Google tag (gtag.js) -->
-    <!-- 네이버 검색 엔진 등록 -->
-    <meta name="naver-site-verification" content="3ecc520ac382dad42a51a8c22ffc965590208b04" />
-    <!-- 여기까지 네이버 검색 엔진 등록 -->
-    <!-- 구글 애드센스 -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6785122142660292"
-    crossorigin="anonymous"></script>
-    <!-- 구글 애드센스 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"/>
-    <link rel="stylesheet" href="resource/style.css"/>
-    <script type="text/javascript" src="resource/siteCollection.json"></script>
-    <script type="module" src="resource/custom.js"></script>
+    gtag('config', 'G-1P0694X5KZ');
+  </script>
+  <!-- 여기까지 Google tag (gtag.js) -->
+  <!-- 네이버 검색 엔진 등록 -->
+  <meta name="naver-site-verification" content="3ecc520ac382dad42a51a8c22ffc965590208b04" />
+  <!-- 여기까지 네이버 검색 엔진 등록 -->
+  <!-- 구글 애드센스 -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6785122142660292"
+  crossorigin="anonymous"></script>
+  <!-- 구글 애드센스 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"/>
+  <link rel="stylesheet" href="resource/style.css?3"/>
 </head>
 <body>
-  <nav class="container">
-    <ul>
-      <li>
-        <img src="resource/favicon_32.png">
-        <h1>게으른 사이트</h1>
-      </li>
-    </ul>
-    <ul>
-      <li><a href="#">메인</a></li>
-      <li><a href="/meal/">식단표 보기</a></li>
-    </ul>
-  </nav>
-  <main class="container">
-
-    <br>
-
-    <article>
-      <p>유용한 사이트 모음</p>
-      <ul id="siteCollectionItems">
+  <header class="container">
+    <nav>
+      <ul>
+        <li><strong>게으른 사이트</strong></li>
       </ul>
-    </article>
-
-    <br>
-
-    <p>하남자 특: 여기서 실험 함</p>
-    <counter-component></counter-component>
-    <counter-component></counter-component>
-    <p>정상 작동 하면 카운터 나움</p>
+      <ul>
+        <li><a href="#">깃허브</a></li>
+        <li>
+          <details class="dropdown">
+            <summary role="button">Theme</summary>
+            <ul>
+              <li><a href="#" data-theme-switcher="auto">Auto</a></li>
+              <li><a href="#" data-theme-switcher="light">Light</a></li>
+              <li><a href="#" data-theme-switcher="dark">Dark</a></li>
+            </ul>
+          </details>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <main class="container">
+    <section>
+      <div class="card">
+        <article>
+          <header>유용한 사이트 모음</header>
+          <body>
+            <div class="grid">
+              <ul id="site_items"></ul>
+            </div>
+          </body>
+        </article>
+      </div>
+    </section> 
   </main>
 
+  <script src="resource/minimal-theme-switcher.js"></script>
   <script type="text/javascript" src="resource/main.js"></script> 
 </body>
 </html>

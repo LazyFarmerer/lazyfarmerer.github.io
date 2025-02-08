@@ -1,4 +1,9 @@
-site = [
+[
+    {
+        "name": "대한물리치료협회",
+        "url": "https://edu.kpta.co.kr/",
+        "description": "대한물리치료협회"
+    },
     {
         "name": "pixlr",
         "url": "https://pixlr.com/kr/",

@@ -1,8 +1,20 @@
 :root {
-    scroll-behavior: smooth; /* 화면 스크롤이동시 스무스 하게 움직이게 해줌 */
+  scroll-behavior: smooth; /* 화면 스크롤이동시 스무스 하게 움직이게 해줌 */
 }
 
-body > nav > ul > li > h1 {
-    display: inline-block;
-    font-size: 1em;
+nav > ul > li > strong {
+  font-size: 1.5rem;
+}
+
+.card {
+  container-type: inline-size;
+
+  #site_description {
+    font-size: 0.7rem;
+  }
+  @container (max-width: 700px) {
+    #site_description {
+      display: none;
+    }
+  }
 }
