@@ -10,7 +10,7 @@ class Card extends HTMLElement {
     const desc = this.getAttribute('data-desc') || '설명 없음';
     const url = this.getAttribute('data-url') || '#';
 
-    loadComponentHTML("/resource/component/card.html", (element) => {
+    loadComponentHTML("/js/component/card.html", (element) => {
       this.appendChild(element);
       this.querySelector(".card-title").textContent = title;
       this.querySelector(".card-text").textContent = desc;

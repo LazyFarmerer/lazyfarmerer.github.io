@@ -6,10 +6,10 @@
   <meta name="description" content="개인이 만든 페이지">
   <meta name="keyword" content="개인, 도구, 페이지">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" type="image/png" sizes="32x32" href="resource/images/favicon_32.png" />
-  <link rel="apple-touch-icon" type="image/png" sizes="32x32" href="resource/images/favicon_32.png" />
-  <link rel="shortcut icon" type="image/png" sizes="196x196" href="resource/images/favicon_196.png" />
-  <link rel="apple-touch-icon" type="image/png" sizes="196x196" href="resource/images/favicon_196.png" />
+  <link rel="shortcut icon" type="image/png" sizes="32x32" href="/assets/images/favicon_32.png" />
+  <link rel="apple-touch-icon" type="image/png" sizes="32x32" href="/assets/images/favicon_32.png" />
+  <link rel="shortcut icon" type="image/png" sizes="196x196" href="/assets/images/favicon_196.png" />
+  <link rel="apple-touch-icon" type="image/png" sizes="196x196" href="/assets/images/favicon_196.png" />
   <title>LazyFarmer</title>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-1P0694X5KZ"></script>
@@ -29,7 +29,7 @@
   crossorigin="anonymous"></script>
   <!-- 구글 애드센스 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
-  <link rel="stylesheet" href="/style.css"/>
+  <link rel="stylesheet" href="/css/base.css"/>
 </head>
 <body class="d-flex flex-column min-vh-100">
   <main class="flex-grow-1">
@@ -48,8 +48,14 @@
           <section>
             <div class="card shadow-sm mb-4">
               <div class="card-body">
-                <h5 class="card-title">🗂️ 유용한 사이트 모음</h5>
-                <p class="card-text">자주 사용하는 사이트들을 보기 쉽게 정리해둔 페이지입니다.</p>
+                <h5 class="card-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-bookmarks" viewBox="0 0 16 16">
+                      <path d="M2 4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v11.5a.5.5 0 0 1-.777.416L7 13.101l-4.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v10.566l3.723-2.482a.5.5 0 0 1 .554 0L11 14.566V4a1 1 0 0 0-1-1z"/>
+                      <path d="M4.268 1H12a1 1 0 0 1 1 1v11.768l.223.148A.5.5 0 0 0 14 13.5V2a2 2 0 0 0-2-2H6a2 2 0 0 0-1.732 1"/>
+                    </svg>
+                    유용한 사이트 모음
+                </h5>
+                <p class="card-text">매일 사용하진 않지만 가끔씩은 들리게 되는 그런 사이트들 모음</p>
                 <a href="/sites" class="btn btn-primary">바로가기</a>
               </div>
             </div>
@@ -63,9 +69,8 @@
 </body>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
-  <script src="/resource/bs-theme.js"></script>
-  <script type="module" src="/resource/component/nav.js"></script>
-  <script type="module" src="/resource/component/footer.js"></script>
-  <script type="text/javascript" src="/main.js"></script> 
+  <script src="/js/vendor/bs-theme.js"></script>
+  <script type="module" src="/js/component/nav.js"></script>
+  <script type="module" src="/js/component/footer.js"></script>
 </body>
 </html>

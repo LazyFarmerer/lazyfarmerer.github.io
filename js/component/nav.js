@@ -1,4 +1,4 @@
-import loadComponentHTML from "./../utils/component_loader.js";
+import loadComponentHTML from "../utils/component_loader.js";
 
 class Nav extends HTMLElement {
   constructor() {
@@ -18,7 +18,7 @@ class Nav extends HTMLElement {
   }
 
   connectedCallback() {
-    loadComponentHTML("/resource/component/nav.html", (element) => {
+    loadComponentHTML("/js/component/nav.html", (element) => {
       this.appendChild(element)
 
       const theme = this.getAttribute("data-bs-theme");
