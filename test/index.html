@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="kr" data-bs-theme="auto">
+<html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="author" content="게으른 농부">
@@ -10,6 +10,7 @@
   <link rel="apple-touch-icon" type="image/png" sizes="32x32" href="/assets/images/favicon_32.png" />
   <link rel="shortcut icon" type="image/png" sizes="196x196" href="/assets/images/favicon_196.png" />
   <link rel="apple-touch-icon" type="image/png" sizes="196x196" href="/assets/images/favicon_196.png" />
+  <title>테스트용</title>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-1P0694X5KZ"></script>
   <script>
@@ -27,46 +28,45 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6785122142660292"
   crossorigin="anonymous"></script>
   <!-- 구글 애드센스 -->
-
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
-  <link rel="stylesheet" href="/css/base.css" />
-  <link rel="stylesheet" href="/css/pages/sites.css" />
-  <title>사이트 모음</title>
+  <link rel="stylesheet" href="/css/base.css"/>
 </head>
 <body class="d-flex flex-column min-vh-100">
   <main class="flex-grow-1">
-
     <my-nav data-bs-theme="auto"></my-nav>
 
-    <div class="container my-4">
-      <h1 class="mb-4">유용한 사이트 모음</h1>
+    <article class="container">
 
-      <div class="row">
+      <contents-card>
+        <span data-slot="title">타이틀</span>
+        <span data-slot="desc">내용</span>
+        <a data-slot="button" href="#">링크</a>
+      </contents-card>
 
-        <!-- 메인 카드 영역 -->
-        <section id="card-list" class="col-md-9">
-          <!-- <contents-card> 예시 </contents-card> -->
-        </section>
-        <!-- 사이드바 -->
-        <aside class="col-md-3 mb-4 d-none d-md-block">
-          <div class="sidebar-sticky">
-            <div class="list-group">
-              <!-- <a href="#card1" class="list-group-item list-group-item-action">예시 1</a> -->
-            </div>
-          </div>
-        </aside>
+    </article>
 
-      </div>
-    </div>
   </main>
+
   <my-footer></my-footer>
+
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.29.0/full/pyodide.js"></script>
+  <script>
+    async function main() {
+      let pyodide = await loadPyodide();
+      // Pyodide is now ready to use...
+      console.log(pyodide.runPython(`
+        import sys
+        # sys.version
+        sys.argv
+      `));
+    };
+    main();
+  </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
   <script src="/js/vendor/bs-theme.js"></script>
   <script type="module" src="/js/component/nav.js"></script>
   <script type="module" src="/js/component/footer.js"></script>
   <script type="module" src="/js/component/contentsCard.js"></script>
-  <script src="/js/pages/sites.js"></script>
-    
 </body>
 </html>

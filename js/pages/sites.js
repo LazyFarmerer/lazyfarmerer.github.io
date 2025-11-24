@@ -26,11 +26,13 @@ function fetch_spreadsheet_data() {
       sidebar_link.textContent = title
       sidebar_list_group.appendChild(sidebar_link)
 
-      const card = document.createElement("my-card")
+      const card = document.createElement("contents-card")
       card.setAttribute("id", title)
-      card.setAttribute("data-title", title)
-      card.setAttribute("data-desc", desc)
-      card.setAttribute("data-url", url)
+      card.innerHTML = /*html*/ `
+        <span data-slot="title">${title}</span>
+        <span data-slot="desc">${desc}</span>
+        <a data-slot="button" target="_blank" href="${url}">링크</a>
+      `
       card_list_group.appendChild(card)
     })
   })
@@ -49,11 +51,13 @@ function fetch_data() {
       sidebar_link.textContent = title
       sidebar_list_group.appendChild(sidebar_link)
 
-      const card = document.createElement("my-card")
+      const card = document.createElement("contents-card")
       card.setAttribute("id", title)
-      card.setAttribute("data-title", title)
-      card.setAttribute("data-desc", desc)
-      card.setAttribute("data-url", url)
+      card.innerHTML = /*html*/ `
+        <span data-slot="title">${title}</span>
+        <span data-slot="desc">${desc}</span>
+        <a data-slot="url" target="_blank" href="${url}" class="btn btn-primary">바로가기</a>
+      `
       card_list_group.appendChild(card)
     })
   })
