@@ -18,7 +18,7 @@ class Nav extends HTMLElement {
   }
 
   connectedCallback() {
-    loadComponentHTML("/js/component/nav.html", (element) => {
+    loadComponentHTML("/00_resource/component/nav.html", (element) => {
       this.appendChild(element)
 
       const theme = this.getAttribute("data-bs-theme");

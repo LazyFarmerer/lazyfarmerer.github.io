@@ -5,7 +5,7 @@ class ContentsCard extends HTMLElement {
   connectedCallback() {
     // 안보이게 하기
     this.style.visibility = "hidden"
-    loadComponentHTML("/js/component/contentsCard.html", (element) => {
+    loadComponentHTML("/00_resource/component/contentsCard.html", (element) => {
       this.appendChild(element);
 
       const titleSlot = this.querySelector("[slot-title]")

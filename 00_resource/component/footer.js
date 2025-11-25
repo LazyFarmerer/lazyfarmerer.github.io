@@ -7,7 +7,7 @@ class Footer extends HTMLElement {
   }
 
   connectedCallback() {
-    loadComponentHTML("/js/component/footer.html", (element) => {
+    loadComponentHTML("/00_resource/component/footer.html", (element) => {
       // this.shadowRoot.appendChild(element);
       this.appendChild(element);
     })
