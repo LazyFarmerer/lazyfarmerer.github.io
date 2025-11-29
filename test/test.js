@@ -88,7 +88,7 @@ document.querySelector("#login-form").addEventListener("submit", async (event) =
 
   // 버튼 비활성화
   button.disabled = true
-  stopTimer()
+  startTimer(0)
 
   try {
     const userCredential = await signInWithEmailAndPassword(auth, email.value, password.value)
@@ -117,7 +117,7 @@ document.querySelector("#login-form").addEventListener("submit", async (event) =
 })
 
 // 로그아웃
-document.querySelector("#logout-button").addEventListener("click", (event) => {
+document.querySelector("#logout-button").addEventListener("click", async (event) => {
   const button = event.target
   const result = document.getElementById("result")
   result.textContent = ""
@@ -126,40 +126,55 @@ document.querySelector("#logout-button").addEventListener("click", (event) => {
   button.disabled = true
   startTimer(0)
 
-  signOut(auth)
-    .then(() => {
-      console.log("로그아웃 성공")
-      result.textContent = "로그아웃 성공"
-    })
-    .catch((error) => {
-      console.log(error);
-      result.textContent = /* html */ `
-        <p>결과 - 회원가입 실패</p>
-        <p>오류내용 - ${error}</p>
-      `
-    })
-    .then(() => {
-      // 버튼 활성화
-      button.disabled = false
-      stopTimer()
-    })
+  try {
+    await signOut(auth); // 💡 await 사용
+    console.log("로그아웃 성공")
+    result.textContent = "로그아웃 성공"
+  }
+    catch (error) {
+    console.log(error);
+    result.innerHTML = /* html */ `
+      <p>결과 - 로그아웃 실패</p>
+      <p>오류내용 - ${error}</p>
+    `
+  }
+  finally {
+    // 버튼 활성화
+    button.disabled = false
+    stopTimer()
+  }
 })
 
 // 회원 탈퇴
 document.querySelector("#delete-button").addEventListener("click", (event) => {
   const button = event.target
   const result = document.getElementById("result")
-  const user = auth.currentUser;
+  result.textContent = ""
+
+  if (!user) {
+    result.textContent = "로그인이 되어 있지 않읆...";
+    return;
+  }
 
   // 버튼 비활성화
   button.disabled = true
   stopTimer()
 
-  deleteUser(user)
-
-  // 버튼 활성화
-  button.disabled = false
-  stopTimer()
+  try {
+    deleteUser(user)
+    result.textContent = "회원 탈퇴 성공 및 로그아웃"
+  }
+  catch (error) {
+    result.innerHTML = /* html */ `
+      <p>결과 - 회원 탈퇴 실패</p>
+      <p>오류내용 - ${error}</p>
+    `;
+  }
+  finally {
+    // 버튼 활성화
+    button.disabled = false
+    stopTimer()
+  }
 })
 
 // 상태변화 시 알아서 작동
@@ -169,7 +184,8 @@ onAuthStateChanged(auth, async (user) => {
 
   if (user) {
     data_curr_status.textContent = "로그인 상태 " + user.email
-  } else {
+  }
+  else {
     data_curr_status.textContent = "로그아웃 상태"
   }
 
@@ -191,7 +207,8 @@ onAuthStateChanged(auth, async (user) => {
     const jsonResponse = await response.json()
     console.log(jsonResponse)
     data_curr_html.innerHTML = jsonResponse.data.code.code
-  } catch (error) {
+  }
+  catch (error) {
     data_curr_html.innerHTML = "<p>html 가져오기 실패</p>"
   }
 });
