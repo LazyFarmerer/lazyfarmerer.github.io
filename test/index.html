@@ -35,13 +35,65 @@
   <main class="flex-grow-1">
     <my-nav data-bs-theme="auto"></my-nav>
 
-    <article class="container">
+    <article class="container mt-4">
 
-      <contents-card>
-        <span data-slot="title">타이틀</span>
-        <span data-slot="desc">내용</span>
-        <a data-slot="button" href="#">링크</a>
-      </contents-card>
+      <div class="row">
+        <p>로그인 기능 테스트</p>
+        <div class="col border p-2" >
+          <p>회원가입</p>
+          <form id="signup-form" class="row">
+            <div class="p-2">
+              <label for="signup-email">아이디</label>
+              <input id="signup-email" type="email" required />
+            </div>
+            <div class="p-2">
+              <label for="signup-password">비밀번호 </label>
+              <input id="signup-password" type="password" required />
+            </div>
+            <div class="p-2">
+              <button id="signup-button" type="submit">회원가입</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="col border">
+          <p>로그인</p>
+          <form id="login-form" class="row">
+            <div class="p-2">
+              <label for="login-email">아이디</label>
+              <input id="login-email" type="email" />
+            </div>
+            <div class="p-2">
+              <label for="login-password">비밀번호 </label>
+              <input id="login-password" type="password" />
+            </div>
+            <div class="p-2">
+              <button id="login-button">로그인</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="col border">
+          <p>로그아웃</p>
+          <div class="p-2">
+            <button id="logout-button">로그아웃</button>
+          </div>
+          <div class="p-2">
+            <button id="delete-button">회원탈퇴</button>
+          </div>
+        </div>
+
+        <div  class="border p-2">
+          <p>현재 상태 - <span data-curr-status></span></p>
+          <div data-curr-html><p>불러오는 중...</p></div>
+        </div>
+
+        <div class="border p-2">
+          <p>버튼 눌렀을 때 결과</p>
+          <p>지연 시간 - <span data-time="delay_time">0</span></p>
+          <p id="result"></p>
+        </div>
+      </div>
 
     </article>
 
@@ -49,22 +101,10 @@
 
   <my-footer></my-footer>
 
-  <script src="https://cdn.jsdelivr.net/pyodide/v0.29.0/full/pyodide.js"></script>
-  <script>
-    async function main() {
-      let pyodide = await loadPyodide();
-      // Pyodide is now ready to use...
-      console.log(pyodide.runPython(`
-        import sys
-        # sys.version
-        sys.argv
-      `));
-    };
-    main();
-  </script>
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
   <script src="/00_resource/vendor/bs-theme.js"></script>
+  <script type="module" src="./test.js"></script>
+  <script type="module" src="/00_resource/utils/auth.js"></script>
   <script type="module" src="/00_resource/component/nav.js"></script>
   <script type="module" src="/00_resource/component/footer.js"></script>
   <script type="module" src="/00_resource/component/contentsCard.js"></script>
