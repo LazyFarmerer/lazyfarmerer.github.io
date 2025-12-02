@@ -146,7 +146,7 @@ document.querySelector("#logout-button").addEventListener("click", async (event)
 })
 
 // 회원 탈퇴
-document.querySelector("#delete-button").addEventListener("click", (event) => {
+document.querySelector("#delete-button").addEventListener("click", async (event) => {
   const button = event.target
   const result = document.getElementById("result")
   result.textContent = ""
@@ -161,7 +161,7 @@ document.querySelector("#delete-button").addEventListener("click", (event) => {
   stopTimer()
 
   try {
-    deleteUser(user)
+    await deleteUser(user)
     result.textContent = "회원 탈퇴 성공 및 로그아웃"
   }
   catch (error) {
