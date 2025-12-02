@@ -1,0 +1,11 @@
+{
+  "name": "알람보내는 페이지",
+  "short_name": "알람",
+  "scope": "/test/notification/",
+  "start_url": "/test/notification/index.html",
+  "display": "standalone",
+  "icons": [
+    { "src": "/01_assets/images/favicon_196.png", "sizes": "196x196", "type": "image/png" },
+    { "src": "/01_assets/images/favicon_512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
