@@ -6,7 +6,7 @@ self.addEventListener("push", (event) => {
   let data = {
     title: "내가 보냄",
     body: "기본 내용",
-    icon: "/icons/icon-192.png",
+    icon: "/01_assets/images/icon_message_192.png",
   };
 
   if (event.data) {

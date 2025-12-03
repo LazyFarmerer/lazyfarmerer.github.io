@@ -56,6 +56,7 @@ notification_btn.addEventListener("click", async (event) => {
   const url = "https://rubber-aprilette-lazyfarmerer-19b210c4.koyeb.app"
   await fetch(`${url}/api/notification?message=${message_input.value}&uid=${uid}`)
   console.log("완료")
+  alert("완료")
 })
 
 // base64url → Uint8Array 변환 함수
