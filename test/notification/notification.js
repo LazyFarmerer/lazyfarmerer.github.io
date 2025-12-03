@@ -1,11 +1,14 @@
+import { auth } from "/00_resource/utils/auth.js"
+
+
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('./service_worker.js?1');
 }
 
 const vapidPublicKey = "BKXg1d_L9ghd198hV2PIb2aYSV6tMwu3YjEYHjrB601fkI6yD2Z9FBra8N9KTwdrQ2d6WTzToii75-OIqMbCwjg"
 
+const subscription_btn = document.querySelector("#subscription-button")
 const notification_btn = document.querySelector("#notification-button")
-const btn = document.querySelector("#action-button")
 // btn.addEventListener("click", (event) => {
 //   // 서비스워커가 준비 될 때 까지 기다리기
 //   navigator.serviceWorker.ready
@@ -31,14 +34,27 @@ const btn = document.querySelector("#action-button")
 //     })
 // })
 
-notification_btn.addEventListener("click", (event) => {
+subscription_btn.addEventListener("click", (event) => {
   subscribePush()
 })
 
-btn.addEventListener("click", async (event) => {
+notification_btn.addEventListener("click", async (event) => {
+  const user = auth.currentUser
+  if (!user) {
+    alert("로그인 테스트 후 이용해주세요!")
+    return
+  }
+  const uid = user.uid
+
+  const message_input = document.querySelector("#message-input")
+  if (!message_input.value) {
+    alert("메세지도 입력하세요")
+    return
+  }
+
   // const url = "http://127.0.0.1:8000"
   const url = "https://rubber-aprilette-lazyfarmerer-19b210c4.koyeb.app"
-  await fetch(`${url}/api/notification/test`)
+  await fetch(`${url}/api/notification?message=${message_input.value}&uid=${uid}`)
   console.log("완료")
 })
 
@@ -46,7 +62,7 @@ btn.addEventListener("click", async (event) => {
 function urlBase64ToUint8Array(base64String) {
   const padding = "=".repeat((4 - base64String.length % 4) % 4);
   const base64 = (base64String + padding).replace(/-/g, "+").replace(/_/g, "/");
-  
+
   const rawData = atob(base64);
   const outputArray = new Uint8Array(rawData.length);
   
@@ -58,22 +74,32 @@ function urlBase64ToUint8Array(base64String) {
 
 // 서비스 워커가 준비되면 푸시 구독 요청
 async function subscribePush() {
+  const user = auth.currentUser
+  if (!user) {
+    alert("로그인 테스트 후 이용해주세요!")
+    return
+  }
+  const uid = user.uid
+
   const registration = await navigator.serviceWorker.ready;
   const subscription = await registration.pushManager.subscribe({
     userVisibleOnly: true,
     applicationServerKey: urlBase64ToUint8Array(vapidPublicKey)
   });
 
-  console.log("푸시 구독 성공:", subscription);
-  console.log(JSON.stringify(subscription));
-
+  console.log("푸시 구독 정보:", subscription);
+  const body = {
+    uid: uid,
+    ...JSON.parse(JSON.stringify(subscription))
+  }
+  console.log("보내는 데이터:", body);
   // 구독 정보 서버에 저장
   // const url = "http://127.0.0.1:8000"
   const url = "https://rubber-aprilette-lazyfarmerer-19b210c4.koyeb.app"
-  await fetch(`${url}/api/notification/save-subscription`, {
+  await fetch(`${url}/api/notification/add-subscription`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(subscription)
+    body: JSON.stringify(body)
   });
 
   alert("푸시 알림 구독 완료!");

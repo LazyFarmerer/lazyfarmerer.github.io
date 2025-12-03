@@ -206,9 +206,10 @@ onAuthStateChanged(auth, async (user) => {
     )
     const jsonResponse = await response.json()
     console.log(jsonResponse)
-    data_curr_html.innerHTML = jsonResponse.data.code.code
+    data_curr_html.innerHTML = jsonResponse.detail.code.code
   }
   catch (error) {
+    console.log(error)
     data_curr_html.innerHTML = "<p>html 가져오기 실패</p>"
   }
 });

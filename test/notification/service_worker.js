@@ -4,7 +4,7 @@ self.addEventListener("install", (event) => {
 
 self.addEventListener("push", (event) => {
   let data = {
-    title: "기본 알림 제목",
+    title: "내가 보냄",
     body: "기본 내용",
     icon: "/icons/icon-192.png",
   };
@@ -13,7 +13,7 @@ self.addEventListener("push", (event) => {
     try {
       data = event.data.json();  // JSON 형식 메시지를 받는 경우
     } catch (e) {
-      data.title = event.data.text(); // 텍스트 메시지인 경우
+      data.body = event.data.text(); // 텍스트 메시지인 경우
     }
   }
 

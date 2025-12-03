@@ -42,7 +42,7 @@ function fetch_data() {
   fetch("https://rubber-aprilette-lazyfarmerer-19b210c4.koyeb.app/api/sites")
   .then((response) => response.json())
   .then((response_items) => {
-    response_items.forEach((item) => {
+    response_items.detail.forEach((item) => {
       const {name: title, description: desc, url} = item
 
       const sidebar_link = document.createElement("a")
