@@ -19,7 +19,7 @@ function stopTimer() {
 }
 
 
-// 회원가입
+//#region 회원가입
 document.querySelector("#signup-form").addEventListener("submit", async (event) => {
   event.preventDefault()
 
@@ -75,8 +75,10 @@ document.querySelector("#signup-form").addEventListener("submit", async (event) 
     stopTimer()
   }
 })
+//#endregion
 
-// 로그인
+
+//#region 로그인
 document.querySelector("#login-form").addEventListener("submit", async (event) => {
   event.preventDefault()
   
@@ -115,8 +117,10 @@ document.querySelector("#login-form").addEventListener("submit", async (event) =
     stopTimer()
   }
 })
+//#endregion
 
-// 로그아웃
+
+//#region 로그아웃
 document.querySelector("#logout-button").addEventListener("click", async (event) => {
   const button = event.target
   const result = document.getElementById("result")
@@ -144,8 +148,10 @@ document.querySelector("#logout-button").addEventListener("click", async (event)
     stopTimer()
   }
 })
+//#endregion
 
-// 회원 탈퇴
+
+//#region 회원 탈퇴
 document.querySelector("#delete-button").addEventListener("click", async (event) => {
   const button = event.target
   const result = document.getElementById("result")
@@ -161,8 +167,25 @@ document.querySelector("#delete-button").addEventListener("click", async (event)
   stopTimer()
 
   try {
-    await deleteUser(user)
-    result.textContent = "회원 탈퇴 성공 및 로그아웃"
+    const token = await auth.currentUser.getIdToken()
+    const response = await fetch(
+      "https://rubber-aprilette-lazyfarmerer-19b210c4.koyeb.app/api/auth/delete",
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          "project-Name": "homepage",
+          "Authorization": `Bearer ${token}`,
+        },
+      }
+    )
+    const json = await response.json()
+
+    if (!response.ok) {
+      throw new Error(json.message)
+    }
+
+    result.textContent = "회원 탈퇴 완료"
   }
   catch (error) {
     result.innerHTML = /* html */ `
@@ -176,8 +199,10 @@ document.querySelector("#delete-button").addEventListener("click", async (event)
     stopTimer()
   }
 })
+//#endregion
 
-// 상태변화 시 알아서 작동
+
+//#region 상태변화 시 알아서 작동
 onAuthStateChanged(auth, async (user) => {
   const data_curr_status = document.querySelector("[data-curr-status]")
   const data_curr_html = document.querySelector("[data-curr-html]")
@@ -194,22 +219,25 @@ onAuthStateChanged(auth, async (user) => {
                 : ""
 
   try {
-    const url = "https://rubber-aprilette-lazyfarmerer-19b210c4.koyeb.app"
+    // const url = "https://rubber-aprilette-lazyfarmerer-19b210c4.koyeb.app"
+    const url = "http://127.0.0.1:8000"
 
-    const response = await fetch(`${url}/api/database/test/homepage`,
+    const response = await fetch(`${url}/api/database/test`,
       {
         headers: {
           "Content-Type": "application/json",
+          "project-Name": "homepage",
           "Authorization": `Bearer ${token}`
         }
       }
     )
-    const jsonResponse = await response.json()
+    const jsonResponse = await response.text()
     console.log(jsonResponse)
-    data_curr_html.innerHTML = jsonResponse.detail.code.code
+    data_curr_html.innerHTML = jsonResponse
   }
   catch (error) {
     console.log(error)
     data_curr_html.innerHTML = "<p>html 가져오기 실패</p>"
   }
 });
+//#endregion
