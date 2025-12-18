@@ -10,8 +10,8 @@ onAuthStateChanged(auth, async (user) => {
 
   const token = await user.getIdToken();
 
-  const url = "http://127.0.0.1:8000"
-  // const url = "https://rubber-aprilette-lazyfarmerer-19b210c4.koyeb.app"
+  // const url = "http://127.0.0.1:8000"
+  const url = "https://rubber-aprilette-lazyfarmerer-19b210c4.koyeb.app"
   const response = await fetch(`${url}/api/homepage/test`, {
       method: "GET",
       headers: {
