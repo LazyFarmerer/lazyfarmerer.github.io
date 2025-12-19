@@ -157,6 +157,7 @@ document.querySelector("#delete-button").addEventListener("click", async (event)
   const result = document.getElementById("result")
   result.textContent = ""
 
+  const user = auth.currentUser
   if (!user) {
     result.textContent = "로그인이 되어 있지 않읆...";
     return;
@@ -167,7 +168,7 @@ document.querySelector("#delete-button").addEventListener("click", async (event)
   stopTimer()
 
   try {
-    const token = await auth.currentUser.getIdToken()
+    const token = await user.getIdToken()
     const response = await fetch(
       "https://rubber-aprilette-lazyfarmerer-19b210c4.koyeb.app/api/auth/delete",
       {
